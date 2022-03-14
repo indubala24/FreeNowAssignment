@@ -1,24 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3c7-Sl-f18">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Cardetails View Controller-->
+        <scene sceneID="BLd-4G-93d">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController storyboardIdentifier="CardetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3c7-Sl-f18" customClass="CardetailsViewController" customModule="FreeNow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zfr-Qc-avP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nsL-AG-yxS">
+                                <rect key="frame" x="0.0" y="44" width="414" height="732"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="3c7-Sl-f18" id="9hB-7n-3Ut"/>
+                                    <outlet property="delegate" destination="3c7-Sl-f18" id="RQe-sU-7kF"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yjh-ql-h3m">
+                                <rect key="frame" x="20" y="796" width="374" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="X1T-mW-2NN"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="View In Map"/>
+                                <connections>
+                                    <action selector="didTapViewInMapButton:" destination="3c7-Sl-f18" eventType="touchUpInside" id="iuw-4d-kVD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="czn-b4-xfa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="czn-b4-xfa" firstAttribute="bottom" secondItem="Yjh-ql-h3m" secondAttribute="bottom" constant="10" id="9KE-Lu-vPq"/>
+                            <constraint firstItem="Yjh-ql-h3m" firstAttribute="top" secondItem="nsL-AG-yxS" secondAttribute="bottom" constant="20" id="JB8-Da-fRl"/>
+                            <constraint firstItem="czn-b4-xfa" firstAttribute="trailing" secondItem="Yjh-ql-h3m" secondAttribute="trailing" constant="20" id="Tid-y9-hBh"/>
+                            <constraint firstItem="Yjh-ql-h3m" firstAttribute="leading" secondItem="czn-b4-xfa" secondAttribute="leading" constant="20" id="fFy-S1-TaU"/>
+                            <constraint firstItem="nsL-AG-yxS" firstAttribute="leading" secondItem="czn-b4-xfa" secondAttribute="leading" id="fjG-gT-YQ7"/>
+                            <constraint firstItem="czn-b4-xfa" firstAttribute="trailing" secondItem="nsL-AG-yxS" secondAttribute="trailing" id="gjO-LW-LSH"/>
+                            <constraint firstItem="nsL-AG-yxS" firstAttribute="top" secondItem="czn-b4-xfa" secondAttribute="top" id="hA3-sv-3Xd"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="carListTableView" destination="nsL-AG-yxS" id="I78-e1-XIo"/>
+                        <outlet property="viewInMapButton" destination="Yjh-ql-h3m" id="nQN-AY-ONG"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RUv-iV-yk6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-116" y="12"/>
+        </scene>
+        <!--Car In Map View Controller-->
+        <scene sceneID="MmJ-ca-MGj">
+            <objects>
+                <viewController storyboardIdentifier="CarInMapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Kmp-8t-WF4" customClass="CarInMapViewController" customModule="FreeNow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4fI-Ue-qu3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rhV-s7-DEb">
+                                <rect key="frame" x="0.0" y="44" width="414" height="722"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKH-N5-sam">
+                                <rect key="frame" x="20" y="786" width="374" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="Eoo-Fv-tqH"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="View List"/>
+                                <connections>
+                                    <action selector="didTapViewInList:" destination="Kmp-8t-WF4" eventType="touchUpInside" id="0p9-JI-Wog"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="tME-uc-b80"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rhV-s7-DEb" firstAttribute="top" secondItem="tME-uc-b80" secondAttribute="top" id="5kF-OR-ZxR"/>
+                            <constraint firstItem="uKH-N5-sam" firstAttribute="leading" secondItem="tME-uc-b80" secondAttribute="leading" constant="20" id="CKu-A1-N1u"/>
+                            <constraint firstItem="tME-uc-b80" firstAttribute="bottom" secondItem="uKH-N5-sam" secondAttribute="bottom" constant="20" id="PbX-j1-ee5"/>
+                            <constraint firstItem="rhV-s7-DEb" firstAttribute="leading" secondItem="tME-uc-b80" secondAttribute="leading" id="RQi-bo-jrB"/>
+                            <constraint firstItem="tME-uc-b80" firstAttribute="trailing" secondItem="uKH-N5-sam" secondAttribute="trailing" constant="20" id="ed6-kJ-2I1"/>
+                            <constraint firstItem="uKH-N5-sam" firstAttribute="top" secondItem="rhV-s7-DEb" secondAttribute="bottom" constant="20" id="q04-oe-RJa"/>
+                            <constraint firstItem="tME-uc-b80" firstAttribute="trailing" secondItem="rhV-s7-DEb" secondAttribute="trailing" id="r3u-Mf-cTm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="rhV-s7-DEb" id="JrW-t9-8Fn"/>
+                        <outlet property="viewListButton" destination="uKH-N5-sam" id="3Jd-Q5-Ewr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zrv-eo-S1M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="906" y="27"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
